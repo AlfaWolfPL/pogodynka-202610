@@ -1,0 +1,34 @@
+App\Entity\Location:
+    properties:
+        city:
+            -   NotBlank:
+                    message: "Nazwa miasta nie może być pusta."
+                    groups: ['create', 'update']
+            -   Length:
+                    min: 2
+                    max: 255
+                    minMessage: "Miasta musi mieć co najmniej 2 znaki."
+                    groups: ['create', 'update']
+        country:
+            -   NotBlank:
+                    message: "Wybierz kraj."
+                    groups: ['create', 'update']
+        latitude:
+            -   NotBlank:
+                    message: "Szerokość geograficzna jest wymagana."
+                    groups: ['create', 'update']
+            -   Range:
+                    min: -90
+                    max: 90
+                    notInRangeMessage: "Szerokość geograficzna musi mieścić się w zakresie od {{ min }} do {{ max }}."
+                    groups: ['create', 'update']
+        longitude:
+            -   NotBlank:
+                    message: "Długość geograficzna jest wymagana."
+                    groups: ['create', 'update']
+            -   Range:
+                    min: -180
+                    max: 180
+                    notInRangeMessage: "Długość geograficzna musi mieścić się w zakresie od {{ min }} do {{ max }}."
+                    groups: ['create', 'update']
+

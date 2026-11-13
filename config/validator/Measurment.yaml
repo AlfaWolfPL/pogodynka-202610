@@ -1,0 +1,22 @@
+App\Entity\Measurment:
+    properties:
+        location:
+            - NotNull:
+                  message: "Lokalizacja jest wymagana."
+                  groups: ['create', 'update']
+        date:
+            - NotNull:
+                  message: "Data jest wymagana."
+                  groups: ['create', 'update']
+            - Type:
+                  value: \DateTimeInterface
+                  groups: ['create', 'update']
+        celsius:
+            - NotBlank:
+                  message: "Temperatura (Celsius) jest wymagana."
+                  groups: ['create', 'update']
+            - Range:
+                  min: -40
+                  max: 40
+                  notInRangeMessage: "Temperatura musi mieścić się w zakresie od {{ min }} do {{ max }} stopni."
+                  groups: ['create', 'update']
